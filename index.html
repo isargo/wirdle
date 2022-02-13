@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wirdle</title>
+</head>
+<body>
+<input type="text" length="25" id="guess"/><input type="button" value="Guess" onclick="show_hints(document.getElementById('guess').value, secret)"/>
+<hr>
+Feedback:
+<div id="hints"></div>
+
+<script>
+    function show_hints(guess, secret) {
+        let hint = "";
+        for (let num=0; num<5; num++) {
+            if (guess.charAt(num) == secret.charAt(num)) {
+                hint += guess.charAt(num).toUpperCase();
+            }
+            else if (secret.includes(guess.charAt(num))) {
+                hint += guess.charAt(num).toLowerCase();
+            }
+            else {
+                hint += "-"
+            }
+        }
+
+        document.getElementById("hints").innerHTML += "<br>" + hint;
+    }
+
+    possible_words = [
+        'tower',
+        'april',
+        'queen',
+        'adult',
+        'apple',
+        'dress',
+        'allow',
+        'other',
+        'black',
+        'block',
+        'blood',
+        'error',
+        'enemy',
+        'cover',
+        'cross',
+        'dream',
+        'dance',
+        'cycle',
+        'money',
+        'metal',
+        'lunch',
+        'nurse',
+        'offer',
+        'paper',
+        'phone'
+    ]
+
+    secret = possible_words[Math.floor(Math.random()*possible_words.length)];
+</script>
+</body>
+</html>
