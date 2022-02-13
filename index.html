@@ -12,6 +12,8 @@ Feedback:
 
 <script>
     function show_hints(guess, secret) {
+        guess = guess.toLowerCase();
+
         let hint = "";
         for (let num=0; num<5; num++) {
             if (guess.charAt(num) == secret.charAt(num)) {
